@@ -15,11 +15,16 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('book_id');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->boolean('has_backstage_pass')->default(false);//管理画面入れるかどうか
+            $table->boolean('is_superuser')->default(false);//ユーザ削除とかの権限があるかどうか
+            $table->boolean('is_deleted')->default(false);//ユーザー削除
+            $table->boolean('is_banned')->default(false);//アカウント停止
             $table->timestamps();
         });
     }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LectioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/top', [LectioController::class, 'top']);
+Route::get('/favorite', [LectioController::class, 'favoriteBook']);
+Route::get('/favorite/create', [LectioController::class, 'createFavoriteBook']);
